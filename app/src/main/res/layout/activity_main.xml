@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vissza"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Az én listáim:"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#F0F4F8"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout">
+
+        <TextView android:id="@+id/statTotal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="📊 Összes" android:padding="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" />
+        <TextView android:id="@+id/statEmpty" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🟡 Üres" android:padding="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" />
+        <TextView android:id="@+id/statInProgress" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🔵 Folyamatban" android:padding="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" />
+        <TextView android:id="@+id/statUrgent" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🔴 Sürgős" android:padding="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" />
+        <TextView android:id="@+id/statDone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="⚪ Kész" android:padding="4dp" android:background="?attr/selectableItemBackground" android:clickable="true" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/statsContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvToBuyLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Megveendő"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvToBuy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvBoughtLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Megvásárolt"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBought"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
